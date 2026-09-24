@@ -1,3 +1,0 @@
-- [Expo SDK 57 verification](expo-sdk-57-verification.md) — native tabs use nested Trigger.Icon/Label components; Expo Doctor must run from the app directory.
-- [Homework reference visual language](homework-reference-visual-language.md) — keep Home compact and light, Scan dark and full-screen, and Solve dense and utility-first.
-- [Offline homework solving](offline-homework-solving.md) — no paid AI, API keys, or upgrades; keep scan solving local and explicit about OCR limits.

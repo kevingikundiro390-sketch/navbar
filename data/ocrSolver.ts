@@ -353,64 +353,11 @@ export async function recognizeHomeworkScan({
     };
   }
 
-  let recognition: RecognizedText;
-  try {
-    const { isSupported, recognizeText } = await import('expo-mlkit-ocr');
-    if (!isSupported()) {
-      return {
-        status: 'unsupported',
-        message: 'This device does not support on-device text recognition. Try a newer iOS or Android device, or enter a clearer page.',
-        ocrText: '',
-        problems: [],
-      };
-    }
-    recognition = await recognizeText(uri);
-  } catch {
-    return {
-      status: 'unsupported',
-      message: 'The local OCR engine is unavailable in this preview. Use an iOS or Android development build with the OCR module enabled; no account or cloud key is needed.',
-      ocrText: '',
-      problems: [],
-    };
-  }
-
-  const lines = getRecognizedLines(recognition);
-  const ocrText = recognition.text ?? lines.map((line) => line.text).filter(Boolean).join('\n');
-  const candidates = lines
-    .map((line, index) => ({ ...line, text: stripQuestionNumber(normalizeEquation(line.text)), index }))
-    .filter((line) => line.text.includes('=') && /x/i.test(line.text));
-
-  const problems: LocalSolutionProblem[] = [];
-  for (const candidate of candidates) {
-    const solution = solveEquation(candidate.text);
-    if (!solution) continue;
-    problems.push({
-      id: `scan-${problems.length + 1}`,
-      question: candidate.text,
-      answer: solution.answer,
-      steps: solution.steps,
-      placement: placementFromBounds(candidate.boundingBox, candidate.index, lines.length, imageWidth, imageHeight),
-    });
-  }
-
-  if (problems.length === 0) {
-    return {
-      status: 'unreadable',
-      message: ocrText.trim()
-        ? 'I read text on this page, but it does not contain a supported equation with x. I can currently solve linear and quadratic equations only.'
-        : 'I could not read a supported equation on this page. Try a brighter, straighter photo with the whole problem visible.',
-      ocrText,
-      problems: [],
-    };
-  }
-
-  const skippedCount = candidates.length - problems.length;
   return {
-    status: 'solved',
-    message: skippedCount > 0
-      ? `Solved ${problems.length} supported equation${problems.length === 1 ? '' : 's'}; skipped ${skippedCount} line${skippedCount === 1 ? '' : 's'} that could not be verified.`
-      : 'Solved locally on this device. The original photo stays untouched.',
-    ocrText,
-    problems,
+    status: 'unsupported',
+    message: 'On-device OCR is not included in Expo Go. Use the Scan screen to read this page with the free vision service instead.',
+    ocrText: '',
+    problems: [],
   };
+
 }
