@@ -1,0 +1,24 @@
+kind = "mobile"
+previewPath = "/"
+title = "Driving Test Coach"
+description = "A mobile driving theory practice app that helps learners prepare for their permit test with guided quizzes, progress tracking, and focused review."
+version = "1.0.0"
+id = "artifacts/driving-test-coach"
+router = "expo-domain"
+
+[[services]]
+name = "expo"
+ensurePreviewReachable = "/status"
+paths = [ "/" ]
+localPort = 23022
+
+[services.development]
+run = "pnpm --filter @workspace/driving-test-coach run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/driving-test-coach", "run", "build" ]
+run = [ "pnpm", "--filter", "@workspace/driving-test-coach", "run", "serve" ]
+
+[services.env]
+PORT = "23022"
+BASE_PATH = "/"

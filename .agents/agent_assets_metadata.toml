@@ -1,0 +1,30 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "9bpeJftOcN1RbbukQ0CV6"
+uri = "file://attached_assets/qwen3-vl-solved-scan-verification.png"
+type = "image"
+title = "Qwen3-VL solved scan verification"
+description = "A copy of the real homework scan with the three AI-returned answers overlaid in blue pen-style text. The original source image remains unchanged."
+logical_id = "ea0fec3c-ce0f-4820-acea-65871d45c6d6"
+content_hash = "sha256:ffd8bb2e1791b55ef49de9d514f96cd14e5a273a711f5d0e9add0c7d2a9c9965"
+size = 1617906
+mtime_ms = 1790216191810
+storage_uri = "gcs://replit-rams-assets-kirk/rams/assets/repl:53eaa2a8-8e6c-4a56-8ff6-49f4d7225ddf/ea0fec3c-ce0f-4820-acea-65871d45c6d6/0359965e-5625-42df-9051-bc28f90e6268"
+storage_version_token = "1790216206173605"
+content_type = "image/png"
+
+[[outputs]]
+id = "nwk9pwtn3OqvHGdjb2yyy"
+uri = "file://attached_assets/qwen3-vl-worked-scan-verification.png"
+type = "image"
+title = "Qwen3-VL worked-solution scan"
+description = "Fresh verification from the real homework scan: each problem includes the model-returned intermediate working followed by a clearly boxed final answer. The original scan file remains unchanged."
+logical_id = "93504bb8-3313-4ef9-a76e-777e08fff0de"
+content_hash = "sha256:f70503f7c40c42b216146614c6c53723a2f01af1871445a9755d6957bc7b2c69"
+size = 1621639
+mtime_ms = 1790217076061
+storage_uri = "gcs://replit-rams-assets-kirk/rams/assets/repl:53eaa2a8-8e6c-4a56-8ff6-49f4d7225ddf/93504bb8-3313-4ef9-a76e-777e08fff0de/5f628c7c-80d2-4f42-af8f-e77002185dbd"
+storage_version_token = "1790217125377649"
+content_type = "image/png"
